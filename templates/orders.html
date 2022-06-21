@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    {% include 'header.html' %}
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Indian Bookstore</h1>
+        <hr class="my-4">
+    </div>
+    
+    {{userID }}
+    <div class="container">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{url_for('static',filename='images/book.jpeg')}}" alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">Atomic Habits</h5>
+            <p class="card-text">Self help book to improve daily lifestyle</p>
+            <!--  Assuming from here we can have a call to Order's table and get the Order_ID for corresponding Order
+                Sending them to the tracking Page corresponding to that.
+            -->
+            
+            <a href="/track?orderID=1&userID=1" class="btn btn-primary">Check Order Status</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

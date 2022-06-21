@@ -1,0 +1,90 @@
+Indian BookStore
+1. Book_Catalogue Management Service
+    a. Create Book 
+        -> add_book(Book_ID, Book_name, Book_type, Author_name, Publisher, Price, Available_Qty)
+    b. Read all the book details from the database
+        -> fetch_all_book()
+        -> fetch_book(Book_ID)
+    c. Update Book records
+        -> update_book(Book_ID,Book_name, Book_type, Author_name, Publisher, Price, Available_Qty)
+    d. Delete Book records
+        -> delete_book(Book_ID)
+    e. Add Items to Customer's Cart
+        -> call Customer.add_items(Customer_ID,Book_ID,Book_type,Quantity)
+
+2.Customer Management Service
+    a. Create Customer
+    b. Read Customer Information
+        -> get_customer(Customer_ID)
+    c. Update Customer Information
+    d. Delete Customer
+    e. Add Items to Customer's Cart
+        -> add_items(Customer_ID,Book_ID,Book_type,Quantity)
+    f. Add E-book to Customer's Reading List
+        -> add_ebook(Customer_ID,Book_ID)
+    g. Display Cart
+        -> Cart.get_cart_items(Customer_ID)
+
+3. Cart Management Service
+    a. Display Cart
+        -> get_cart_items(Customer_ID) 
+    b. Update Cart
+        -> update_items(Customer_ID, Book_ID, Book_type, Quantity)
+    c. Delete Item from Cart
+        -> delete_items(Customer_ID, Book_ID)
+    d. Initiate Ordering
+        -> Orders.initate_order(Customer_ID,Book_ID,Book_type,Quantity,Total_Price)
+
+4. Order Management Service
+    a. Create a new Order and return Order_ID
+        -> initiate_order(Customer_ID,Book_ID,Book_type,Quantity,Total_Price)
+    b. Make Payment
+        -> make_payment(Order_ID,Total_Price)
+    c. Get Payment Status 
+        -> get_payment_status(Order_ID)
+    c. Send for printing
+        -> if Payment_Status==success 
+            then for each Book_ID in Order_ID where book_type=='paper-book'
+            Vendor.start_printing(Order_ID,Book_ID)
+    d. Add E-books to Customer's Reading List
+        -> if Payment_Status==success
+            then for each Book_ID in Order_ID where book_type=='e-book'
+            Customer.add_ebook(Customer_ID,Book_ID) 
+    e. Update Order Status 
+        -> update_status(Order_ID,Book_ID,Status)
+    f. Fetch Order Details
+        -> fetch_all_orders(Customer_ID)
+        -> get_order_details(Order_ID)
+
+5. Vendor Management Service
+    a. Start Printing the books
+        -> start_printing(Order_ID,Book_ID)
+    b. Start Shipment once printing is over
+        -> Order.get_order_details(Order_ID)
+    c. Initate Delivery
+        -> Shipment.deliver_item(Order_ID,Book_ID,Customer_ID)
+
+6. Shipment Service
+    a. Start Delivery and Generate Shipment ID
+        -> deliver_item(Order_ID,Book_ID,Customer_ID)
+    b. Get Customer Details
+        -> Customer.get_customer(Customer_ID)
+    c. Update Order Status
+        -> Order.update_status(Order_ID,Book_ID,status)
+    d. Return Shipment Details
+        -> get_shipment_details(Shipment_ID)
+
+7. Payment Service
+    a. Make Payment 
+        -> make_payment(Order_ID,Total_Price)
+        -> Call Payment Gateway
+    b. Return Payment Status 
+        -> get_payment_status(Order_ID)
+    
+8. Tracking Shipment Service
+    a. Get Shipment Details
+        -> Shipment.get_shipment_details(Shipment_ID)
+    b. Track Location
+        -> get_shipment_location(Shipment_ID)
+    c. Update Shipment Location
+        -> update_shipment_location(Shipment_ID)

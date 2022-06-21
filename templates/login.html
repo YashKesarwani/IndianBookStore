@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% include 'header.html' %}
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Indian Bookstore</h1>
+        <hr class="my-4">
+    </div>
+    <div style="width:40%; margin-left:10%; border:1px solid black; padding:3% ;" >
+        <form id="loginForm" action="/SignIn" method="POST">
+            <div class="form-outline">
+                <label class="form-label" for="userID">UserID</label>
+                <input type="text" name="userID" id="userID" class="form-control"/>
+            </div>
+            <br>
+            <div class="form-outline">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control"/>
+            </div>
+            <br>
+            <button id="SignIn" class="btn btn-primary btn-md">SignIn</button>
+            <br>
+        </form>
+    </div>
+</body>
+</html>
